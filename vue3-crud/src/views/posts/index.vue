@@ -58,6 +58,8 @@
                                     <th scope="col">Image</th>
                                     <th scope="col">Title</th>
                                     <th scope="col">Content</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Price</th>
                                     <th scope="col" style="width:15%">Actions</th>
                                 </tr>
                             </thead>
@@ -75,6 +77,8 @@
                                     </td>
                                     <td>{{ post.title }}</td>
                                     <td>{{ post.content }}</td>
+                                    <td>{{ post.price }}</td>
+                                    <td>{{ post.description }}</td>
                                     <td class="text-center">
                                         <router-link :to="{ name: 'posts.edit', params:{id: post.id} }" class="btn btn-sm btn-primary rounded-sm shadow border-0 me-2">EDIT</router-link>
                                         <button @click.prevent="deletePost(post.id)" class="btn btn-sm btn-danger rounded-sm shadow border-0">DELETE</button>

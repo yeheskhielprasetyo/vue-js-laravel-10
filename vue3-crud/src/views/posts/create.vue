@@ -15,7 +15,9 @@
     const image = ref("");
     const title = ref("");
     const content = ref("");
-    const errors = ref([]); // menampung data dari response validasi
+    const description = ref("");
+    const price = ref("");
+    const errors = ref([]);
 
     //method for handle file changes
     const handleFileChange = (e) => {
@@ -33,6 +35,8 @@
         formData.append("image", image.value);
         formData.append("title", title.value);
         formData.append("content", content.value);
+        formData.append("description", description.value);
+        formData.append("price", price.value);
 
         //store data with API
         await api.post('/api/posts', formData)
@@ -73,6 +77,13 @@
                                 <textarea class="form-control" v-model="content" rows="5" placeholder="Content Post"></textarea>
                                 <div v-if="errors.content" class="alert alert-danger mt-2">
                                     <span>{{ errors.content[0] }}</span>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Description</label>
+                                <textarea class="form-control" v-model="description" rows="5" placeholder="Description Post"></textarea>
+                                <div v-if="errors.description" class="alert alert-danger mt-2">
+                                    <span>{{ errors.description[0] }}</span>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-md btn-primary rounded-sm shadow border-0">Save</button>
