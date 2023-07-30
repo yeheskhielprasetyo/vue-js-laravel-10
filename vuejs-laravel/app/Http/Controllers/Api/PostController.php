@@ -36,6 +36,8 @@ class PostController extends Controller
             'image'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'title'     => 'required',
             'content'   => 'required',
+            'description'   => 'required',
+            'price'   => 'required',
         ]);
 
         //check if validation fails
@@ -52,6 +54,8 @@ class PostController extends Controller
             'image'     => $image->hashName(),
             'title'     => $request->title,
             'content'   => $request->content,
+            'description'   => $request->description,
+            'price' => $request->price
         ]);
 
         //return response
@@ -74,6 +78,8 @@ class PostController extends Controller
         $validator = Validator::make($request->all(), [
             'title'     => 'required',
             'content'   => 'required',
+            'description' => 'nullable',
+            'price' => 'nullable'
         ]);
 
         //check if validation fails
@@ -99,6 +105,8 @@ class PostController extends Controller
                 'image'     => $image->hashName(),
                 'title'     => $request->title,
                 'content'   => $request->content,
+                'description' => $request->description,
+                'price' => $request->price
             ]);
 
         } else {
@@ -107,6 +115,8 @@ class PostController extends Controller
             $post->update([
                 'title'     => $request->title,
                 'content'   => $request->content,
+                'description'   => $request->description,
+                'price' => $request->price
             ]);
         }
 
